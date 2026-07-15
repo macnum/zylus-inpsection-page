@@ -1,8 +1,9 @@
-// ===== ELEMENT REFERENCES (top: grab once, use everywhere) =====
 const form = document.getElementById('inspectionForm');
 const successPanel = document.getElementById('successPanel');
 const dateInput = document.getElementById('inspection-date');
 const categorySelect = document.getElementById('category');
+const steps = [...form.querySelectorAll('.form-step')];
+const railSteps = [...document.querySelectorAll('.rail-step')];
 
 const SCRIPT_URL =
 	'https://script.google.com/macros/s/AKfycbyc8Rw3rCAnaOPJFdMTliRWdZLigYXwL2B7nSw5HuDwzfC9PfzUt44E2BNTY9NRy6FaEQ/exec';
@@ -31,6 +32,52 @@ function validateInspectionDate() {
 
 dateInput.addEventListener('change', validateInspectionDate);
 categorySelect.addEventListener('change', validateInspectionDate);
+
+let currentStep = 0;
+
+function showStep(i) {
+	steps.forEach((s, idx) => (s.hidden = idx !== i));
+	railSteps.forEach((r, idx) => {
+		r.classList.toggle('active', idx === i);
+		r.classList.toggle('done', idx < i);
+	});
+	currentStep = i;
+
+	if (i === 2) fillReview();
+}
+
+function stepValid(i) {
+	const fields = steps[i].querySelectorAll('input, select, textarea');
+	for (const f of fields) {
+		if (!f.reportValidity()) return false;
+	}
+	return true;
+}
+
+form.addEventListener('click', (ev) => {
+	if (ev.target.matches('[data-next]') && stepValid(currentStep)) {
+		showStep(currentStep + 1);
+	}
+	if (ev.target.matches('[data-back]')) {
+		showStep(currentStep - 1);
+	}
+});
+
+function fillReview() {
+	const rows = [
+		['Name', form.name.value],
+		['Email', form.email.value],
+		['Phone', form.phone.value],
+		['Estate', form.property.value],
+		['Category', form.category.value],
+		['Date', `${form.date.value} at ${form.time.value}`],
+		['Pick-up', form.location.value],
+	];
+
+	document.getElementById('reviewList').innerHTML = rows
+		.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`)
+		.join('');
+}
 
 form.addEventListener('submit', async (ev) => {
 	ev.preventDefault();
@@ -67,5 +114,6 @@ document.getElementById('bookNewBtn').addEventListener('click', () => {
 	btn.disabled = false;
 	btn.textContent = 'Book Inspection';
 
+	showStep(0);
 	form.querySelector('input').focus();
 });
