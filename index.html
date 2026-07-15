@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Inspection</title>
+    <link rel="stylesheet" href="./index.css">
+    <script defer src="./index.js"></script>
+</head>
+
+<body>
+    <form action="" id="inspectionForm">
+        <h1 style="margin-bottom:8px; font-size:1.6rem;">Book Your Inspection</h1>
+        <p style="color:var(--text-muted); margin-bottom:32px;">
+            Reserve a slot and our team will confirm by email.
+        </p>
+        <fieldset>
+            <div>
+                <label for="full-name">Full Name</label>
+                <input required placeholder="eg: John Doe" type="text" id="full-name" name="name">
+            </div>
+
+            <div>
+                <label for="email">Realtor Email Address </label>
+                <input required placeholder="example@xXx.xxx" type="email" id="email" name="email">
+            </div>
+
+            <div>
+                <label for="phone-number">Realtor Phone Number </label>
+                <input required placeholder="08012345678" type="tel" id="phone-number" name="phone">
+            </div>
+        </fieldset>
+        <div>
+            <fieldset>
+                <label for="estate-groups">Estate To Visit</label>
+                <select required id="estate-groups" name="property">
+                    <option selected disabled value="">Select Estate</option>
+                    <optgroup label="Lagos">
+                        <option value="Bolton Height (Flagship luxury apartments)">Bolton Height (Flagship luxury
+                            apartments)</option>
+                        <option value="Lekki Pride I (Smart residential homes)">Lekki Pride I (Smart residential homes)
+                        </option>
+                        <option value="Lekki Pride II (Terrace duplexes and apartments)">Lekki Pride II (Terrace
+                            duplexes and apartments)</option>
+
+                        <option value="Lekki Pride III (Serviced plots and residential lands)">Lekki Pride III (Serviced
+                            plots and residential lands)</option>
+                        <option value="Zylus Court Phase I">Zylus Court Phase I</option>
+                        <option value="Zylus Court Phase II">Zylus Court Phase II</option>
+                        <option value="Zylus Court Extension (Bungalows and terrace duplexes)">Zylus Court Extension
+                            (Bungalows and terrace duplexes)</option>
+                        <option value="Zylus Chrystland City (50-hectare leisure and residential city near St. Augustine
+                            University)">Zylus Chrystland City (50-hectare leisure and residential city near St.
+                            Augustine
+                            University)</option>
+                        <option value="Zylus Olumo Pride Epe">Zylus Olumo Pride Epe</option>
+                        <option value="Tiwa Commercial Hub (Aiyetoro — Commercial plot spaces for businesses)">Tiwa
+                            Commercial Hub (Aiyetoro — Commercial plot spaces for businesses)</option>
+                        <option value="Tiwa Garden City Phase 1">Tiwa Garden City Phase 1</option>
+                        <option value="Tiwa Phase 2">Tiwa Phase 2</option>
+                        <option value="Zylus Prime City (Eleran Igbe Bus Stop — Government allocation lands)">Zylus
+                            Prime City (Eleran Igbe Bus Stop — Government allocation lands)</option>
+                        <option value="Lekki Avana Phase I (Idera Scheme, Eleko)">Lekki Avana Phase I (Idera Scheme,
+                            Eleko)</option>
+                        <option value="Lekki Avana Phase II (Eleran Igbe — Smart-ready bungalows)">Lekki Avana Phase II
+                            (Eleran Igbe — Smart-ready bungalows)</option>
+                    </optgroup>
+                    <optgroup label="Ogun">
+                        <option value="Zylus Olumo Pride Abeokuta">Zylus Olumo Pride Abeokuta</option>
+                        <option value="Zylus Lafenwa Scheme">Zylus Lafenwa Scheme</option>
+                    </optgroup>
+
+                    <optgroup label="Abuja">
+                        <option value="Zylus Residence Abuja">Zylus Residence Abuja </option>
+                    </optgroup>
+                </select>
+
+            </fieldset>
+        </div>
+        <div>
+            <label for="category">Category</label>
+            <select required name="category" id="category">
+                <option selected disabled value="">Select Category</option>
+                <option value="Realtor Only">Realtor Only</option>
+                <option value="Realtor With Client">Realtor With Client</option>
+            </select>
+        </div>
+        <div id="realtor-day-wrap" hidden>
+            <label for="inspection-day">Inspection Day</label>
+            <select id="inspection-day" name="inspection_day">
+                <option value="" selected disabled>Select Day</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+            <small style="color:var(--text-muted); display:block; margin-top:6px;">
+                Realtor inspections hold Tue / Thu / Sat
+            </small>
+        </div>
+        <div>
+            <label for="inspection-date">Inspection Date</label>
+            <input required type="date" id="inspection-date" name="date">
+        </div>
+        <div>
+            <label for="pick-up-location">Pick up location</label>
+            <select required name="location" id="pick-up-location">
+
+                <option selected disabled value="">Select Pick-Up Location</option>
+                <option
+                    value="Head Office (4A Omon Ebhomenye Street, Off Admiralty Way, Lekki Phase 1, Lagos, Nigeria.)">
+                    Head
+                    Office (4A Omon Ebhomenye Street, Off Admiralty Way, Lekki Phase 1, Lagos, Nigeria.)</option>
+                <option value="21 Wemco road, off Agidingbi Road, Ogba, Ikeja Lagos">21 Wemco road, off Agidingbi Road,
+                    Ogba, Ikeja
+                    Lagos</option>
+                <option value="Lafenwa-Abeokuta">Lafenwa-Abeokuta</option>
+                <option value="Iwo Road Roundabout (Ibadan)">Iwo Road Roundabout (Ibadan)</option>
+                <option value="Olomore Abeokuta (Only available for Eti-Ile Court)">Olomore Abeokuta (Only available for
+                    Eti-Ile
+                    Court)</option>
+                <option value="Mega Chicken (Island)">Mega Chicken (Island)</option>
+                <option value="Shoprite (Island)">Shoprite (Island)</option>
+                <option value="Lekki Phase 1 (Island)">Lekki Phase 1 (Island)</option>
+                <option value="Abia House, Off Ahmadu Bello Way">Abia House, Off Ahmadu Bello Way</option>
+                <option value="Treasure Park">Treasure park</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="inspection-time">Inspection Time</label>
+            <input required type="text" value="09:00AM" readonly name="time">
+        </div>
+        <div>
+            <textarea name="message" id="message" placeholder="Your message"></textarea>
+        </div>
+        <div>
+            <button type="submit">Book Inspection</button>
+        </div>
+    </form>
+    <div id="successPanel" class="success-panel" hidden>
+        <div class="success-icon">✓</div>
+        <h1>Booking Received!</h1>
+        <p class="success-detail">
+            A confirmation email has been sent to
+            <b id="sentToEmail"></b>.<br>
+            If you don't see it within a few minutes, please check your spam folder.
+        </p>
+        <p class="success-detail" id="successSummary"></p>
+        <button type="button" id="bookNewBtn">Book New Client</button>
+    </div>
+</body>
+
+</html>
