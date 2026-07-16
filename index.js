@@ -117,3 +117,16 @@ document.getElementById('bookNewBtn').addEventListener('click', () => {
 	showStep(0);
 	form.querySelector('input').focus();
 });
+
+const themeToggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+
+const savedTheme = localStorage.getItem('theme');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+root.dataset.theme = savedTheme || (systemDark ? 'dark' : 'light');
+
+themeToggle.addEventListener('click', () => {
+	const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+	root.dataset.theme = next;
+	localStorage.setItem('theme', next);
+});

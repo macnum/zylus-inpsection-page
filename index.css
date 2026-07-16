@@ -6,6 +6,24 @@
 }
 
 :root {
+    
+      --bg: #faf8f3;
+    --card: #ffffff;
+    --field: #f4f1ea;
+    --border: #e3ddd0;
+    --text: #1c1a15;
+    --muted: #6f6a5e;
+    --accent: #a67c2e;
+    --accent-soft: rgba(166, 124, 46, 0.18);
+    --ink-on-accent: #ffffff;
+    --shadow: rgba(28, 22, 10, 0.12);
+    --radius: 10px;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Outfit', system-ui, sans-serif;
+}
+
+
+[data-theme="dark"] {
     --bg: #0b0d12;
     --card: #12151d;
     --field: #1a1e28;
@@ -15,10 +33,19 @@
     --accent: #c9a24b;
     --accent-soft: rgba(201, 162, 75, 0.22);
     --ink-on-accent: #17130a;
-    --radius: 10px;
-    --font-display: 'Fraunces', Georgia, serif;
-    --font-body: 'Outfit', system-ui, sans-serif;
+    --shadow: rgba(0, 0, 0, 0.45);
 }
+
+/* the date icon fix returns, but scoped to dark only */
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+}
+
+/* smooth the switch */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -57,6 +84,16 @@ body {
     display: flex;
     gap: 32px;
 }
+.img-logo {
+    height: 50px;       
+    width: auto;   
+    display: block;          
+    object-fit: contain; 
+}
+
+.logo-dark { display: none; }
+[data-theme="dark"] .logo-dark { display: block; }
+[data-theme="dark"] .logo-light { display: none; }
 
 .site-nav a {
     color: var(--muted);
@@ -133,7 +170,7 @@ body {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 16px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 24px 60px var(--shadow);
     padding: 40px;
 }
 
@@ -265,10 +302,10 @@ textarea:focus {
     box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+/* input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(0.8);
 }
-
+ */
 
 .review {
     display: grid;
@@ -425,13 +462,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .site-footer {
-    border-top: 1px solid var(--border);
-    background: #090b0f;
+    /* border-top: 1px solid var(--border); */
+    /* background: #090b0f; */
+    background: var(--card);
+    border-top: 1px solid var(--border)
 }
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: 1.4fr 1fr 1fr 0.9fr;
     gap: 48px;
     max-width: 1280px;
     margin: 0 auto;
@@ -514,3 +553,195 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         flex-direction: column-reverse;
     }
 }
+
+.contact {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 96px 6vw;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin-bottom: 48px;
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 96px;
+}
+
+.contact-card,
+.office-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: left;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.contact-card:hover,
+.office-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.contact-card h3,
+.office-card h3 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.office-card h3 span {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 4px;
+}
+
+.contact-card p,
+.office-card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 14px;
+}
+
+.contact-card a,
+.office-card a {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.92rem;
+    margin-bottom: 6px;
+    word-break: break-word;
+}
+
+.contact-card a:hover,
+.office-card a:hover {
+    text-decoration: underline;
+}
+
+.offices-eyebrow {
+    margin-top: 0;
+}
+
+.office-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+@media (max-width: 900px) {
+    .contact-cards,
+    .office-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact {
+        padding: 64px 6vw;
+    }
+}
+/* footer link columns */
+.footer-col > a {
+    display: block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+    transition: color 0.2s;
+}
+
+.footer-col > a:hover {
+    color: var(--accent);
+}
+
+/* socials */
+.socials {
+    display: flex;
+    gap: 14px;
+}
+
+.socials a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    transition: color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.socials a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.socials svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* floating WhatsApp */
+.whatsapp-float {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 100;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 24px var(--shadow);
+    transition: transform 0.2s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+}
+
+.theme-toggle {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--muted);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.theme-toggle svg { width: 18px; height: 18px; }
+
+/* show the icon for the theme you'd switch TO */
+.icon-moon { display: none; }
+[data-theme="dark"] .icon-moon { display: block; }
+[data-theme="dark"] .icon-sun { display: none; }

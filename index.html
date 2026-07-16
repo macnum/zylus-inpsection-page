@@ -11,39 +11,54 @@
         href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./index.css">
+    <script>
+        document.documentElement.dataset.theme =
+            localStorage.getItem('theme') ||
+            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    </script>
     <script src="./index.js" defer></script>
+
 </head>
 
 <body>
 
     <header class="site-header">
-        <a class="brand" href="#">Zylus <span>Homes</span></a>
+        <a class="brand" href="#"><img src="./images.jpeg" class="img-logo" alt=""></a>
         <nav class="site-nav">
-            <a href="#book">Book Inspection</a>
+            <button type="button" id="themeToggle" class="theme-toggle" aria-label="Switch theme">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="12" r="4" />
+                    <path
+                        d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                </svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                </svg>
+            </button>
+            <!-- <a href="#book">Book Inspection</a>
             <a href="#footer">Pick-up Points</a>
-            <a href="#footer">Contact</a>
+            <a href="#contact">Contact</a> -->
         </nav>
     </header>
 
     <main class="hero-grid" id="book">
 
         <section class="hero-copy">
-            <p class="eyebrow">Private Estate Inspections</p>
-            <h1>See it before<br>you sign.</h1>
-            <p class="lede">
-                Reserve a guided inspection across our estates in Lagos, Ogun
-                and Abuja. Pick a date, choose a pick-up point, and our team
-                handles the rest.
-            </p>
+
+            <h1 class="eyebrow">Book An<br>Inspection.</h1>
+            <p class="lede">Our friendly team would love to hear from you</p>
+
 
             <ul class="facts">
                 <li>
-                    <b>Departure — 9:00 AM</b>
+                    <b>Departure: 9:00 AM</b>
                     All inspections leave pick-up points promptly. Arrive 15 minutes early.
                 </li>
                 <li>
-                    <b>Realtor-only days</b>
-                    Tuesdays, Thursdays and Saturdays. Bringing a client? Any day works.
+                    <b>Inspection days</b>
+                    All inspections hold Tuesdays, Thursdays and Saturdays.
                 </li>
                 <li>
                     <b>Instant confirmation</b>
@@ -68,7 +83,7 @@
 
                     <div class="field">
                         <label for="full-name">Full Name</label>
-                        <input required placeholder="e.g. John Doe" type="text" id="full-name" name="name">
+                        <input required placeholder="e.g. Mathew Olakunle" type="text" id="full-name" name="name">
                     </div>
 
                     <div class="field">
@@ -148,7 +163,7 @@
                             <small class="hint">Realtor-only: Tue / Thu / Sat</small>
                         </div>
                         <div class="field">
-                            <label for="inspection-time">Departure Time</label>
+                            c <label for="inspection-time">Departure Time</label>
                             <input type="text" id="inspection-time" name="time" value="09:00AM" readonly>
                         </div>
                     </div>
@@ -211,36 +226,162 @@
             </div>
 
         </section>
+
+
     </main>
+    <section class="contact" id="contact">
+        <p class="eyebrow">Contact Us</p>
+        <h2 class="section-title">We would love to hear from you</h2>
+
+        <div class="contact-cards">
+            <article class="contact-card">
+                <h3>Chat to our friendly team</h3>
+                <p>Chat to sales</p>
+                <a href="tel:07061032706">0706 103 2706</a>
+            </article>
+
+            <article class="contact-card">
+                <h3>Visit Us</h3>
+                <p>Visit our office HQ</p>
+                <a href="https://maps.google.com/?q=4A+Omon+Ebhomeyne+Street+Lekki+Phase+1+Lagos" target="_blank"
+                    rel="noopener">
+                    4A Omon Ebhomeyne Street, Off Admiralty Way,
+                    Lekki Phase 1, Lagos, Nigeria
+                </a>
+            </article>
+
+            <article class="contact-card">
+                <h3>Call Us</h3>
+                <p>Mon–Sat, 8am–5pm</p>
+                <a href="tel:07034100972">0703 410 0972</a>
+                <a href="mailto:info@zylushomes.com">info@zylushomes.com</a>
+            </article>
+        </div>
+
+        <p class="eyebrow offices-eyebrow">Visit Our Offices</p>
+        <h2 class="section-title">Find us at these locations</h2>
+
+        <div class="office-grid">
+            <article class="office-card">
+                <h3>Head Office <span>Lagos, Nigeria</span></h3>
+                <p>4A Omon Ebhomeyne Street, Off Admiralty Way,
+                    Lekki Phase 1, Lagos, Nigeria</p>
+                <a href="tel:07034100972">0703 410 0972</a>
+                <a href="mailto:info@zylushomes.com">info@zylushomes.com</a>
+            </article>
+
+            <article class="office-card">
+                <h3>Enugu Office</h3>
+                <p>13, Umuawulu Street, Independence Layout, Enugu</p>
+                <a href="tel:08024691177">0802 469 1177</a>
+                <a href="mailto:Enuguoffice@zylusgroup.com">Enuguoffice@zylusgroup.com</a>
+            </article>
+
+            <article class="office-card">
+                <h3>Abeokuta Office</h3>
+                <p>3, Lagos-Abeokuta Expressway, Opposite Samdop Filling Station,
+                    Olomore, Abeokuta, Ogun State</p>
+                <a href="tel:07061788986">0706 178 8986</a>
+                <a href="tel:09152614872">0915 261 4872</a>
+                <a href="mailto:Zylus.abeokuta@gmail.com">Zylus.abeokuta@gmail.com</a>
+            </article>
+
+            <article class="office-card">
+                <h3>Mainland Corporate Office II</h3>
+                <p>375, Wempcro Road, Off Agidingbi, Ogba, Lagos</p>
+                <a href="tel:09139249705">0913 924 9705</a>
+            </article>
+
+            <article class="office-card">
+                <h3>Mainland Corporate Office III</h3>
+                <p>12/14 Adewunmi Abudu Street, Off Osolo Way, Ajao Estate, Lagos</p>
+                <a href="tel:08136775252">0813 677 5252</a>
+            </article>
+
+            <article class="office-card">
+                <h3>Abuja Office</h3>
+                <p>Abia House, Off Ahmadu Bello Way, Abuja</p>
+                <a href="tel:08188563947">0818 856 3947</a>
+            </article>
+        </div>
+    </section>
 
 
     <footer class="site-footer" id="footer">
         <div class="footer-grid">
+
             <div class="footer-col">
-                <p class="brand footer-brand">Zylus <span>Homes</span></p>
-                <p class="footer-blurb">
-                    Excellence isn't something we switch on occasionally, it's built into our work culture
-                </p>
+                <a class="brand" href="#"><img src="./images.png" class="img-logo" alt=""></a>
+                <h3>Our Location</h3>
+                <p><b>Head Office:</b> 4A Omon Ebhomeye Street, Off Admiralty Way,
+                    Lekki Phase 1, Lagos, Nigeria.</p>
+                <p><b>Mainland Cooperative Office:</b> 12/14 Adewunmi Abdul Street,
+                    Off Osolo Way, Ajao Estate, Lagos.</p>
             </div>
 
             <div class="footer-col">
-                <h3>Offices</h3>
-                <p>4A Omon Ebhomenye Street,<br>Off Admiralty Way, Lekki Phase 1, Lagos</p>
-                <p>Mainland Cooperative Office: 12/14 Adewunmi Abdul Street, off Osolo way, Ajao Estate, Lagos.</p>
+                <h3>About Zylus Homes</h3>
+                <a href="https://www.youtube.com/@zylustv659" target="_blank" rel="noopener">Real Estate Videos</a>
+                <a href="https://www.zylushomes.com/blog">Blog</a>
+                <a href="#book">Book an Inspection</a>
+                <a href="https://www.zylushomes.com/inspection">How To Use Zylus Portal</a>
+                <a href="https://www.zylushomes.com/inspection">Purchase</a>
             </div>
 
             <div class="footer-col">
-                <h3>Contact</h3>
-                <p><a href="tel:07034100972">0703 410 0972</a></p>
-                <p><a href="mailto:info@zylushomes.com">info@zylushomes.com</a></p>
-                <p>Inspections depart 9:00 AM<br>Realtor-only: Tue / Thu / Sat</p>
+                <h3>Help &amp; Support</h3>
+                <a href="https://www.zylushomes.com/inspection#">FAQs</a>
+                <a href="https://www.zylushomes.com/contact">Customer Care</a>
+                <a href="#book">Book an Inspection</a>
+                <a href="https://www.zylushomes.com/inspection">How To Use Zylus Portal</a>
+                <a href="https://www.zylushomes.com/blog">News</a>
             </div>
+
+            <div class="footer-col">
+                <h3>Follow Us</h3>
+                <div class="socials">
+                    <a href="https://www.facebook.com/groups/1107458949860758/" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.7-1.6h1.5V3.2C16.4 3.1 15.4 3 14.3 3c-2.4 0-4 1.4-4 4.1v2.7H7.5V13h2.8v8h3.2z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/zylushomes/" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.8.1-1.1.1-1.5.2-1.8.3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.3-.3.7-.3 1.8-.1 1.3-.1 1.7-.1 4.8s0 3.5.1 4.8c.1 1.1.2 1.5.3 1.8.2.5.4.8.7 1.1.3.3.6.5 1.1.7.3.1.7.3 1.8.3 1.3.1 1.7.1 4.8.1s3.5 0 4.8-.1c1.1-.1 1.5-.2 1.8-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.3.3-.7.3-1.8.1-1.3.1-1.7.1-4.8s0-3.5-.1-4.8c-.1-1.1-.2-1.5-.3-1.8-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.3-.1-.7-.3-1.8-.3-1.3-.1-1.7-.1-4.8-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zm5.2-2.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z" />
+                        </svg>
+                    </a>
+                    <!-- <a href="#" aria-label="X (Twitter)">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.8 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.3L5.6 21h-3l7-8.1L2.4 3h6.3l4.3 5.7L17.8 3zm-1.1 16.2h1.7L7.7 4.7H5.9l10.8 14.5z" />
+                        </svg>
+                    </a> -->
+                    <a href="https://www.youtube.com/@zylustv659" target="_blank" rel="noopener" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M23 7.2s-.2-1.6-.9-2.3c-.8-.9-1.8-.9-2.2-1C16.7 3.7 12 3.7 12 3.7s-4.7 0-7.9.2c-.4.1-1.4.1-2.2 1-.7.7-.9 2.3-.9 2.3S.8 9.1.8 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.8.9 1.9.8 2.4 1 1.7.2 7.7.2 7.7.2s4.7 0 7.9-.2c.4-.1 1.4-.1 2.2-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.8 15V8.4l6.1 3.3L9.8 15z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
         <div class="footer-bar">
             <p>© 2026 Zylus Homes &amp; Property Ltd. All rights reserved.</p>
         </div>
     </footer>
+
+    <a class="whatsapp-float"
+        href="https://wa.me/2347061032706?text=Hello%20Zylus%20Homes%2C%20I%27d%20like%20to%20make%20an%20enquiry."
+        target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2-1.2-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.4 3.9.6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3z" />
+        </svg>
+    </a>
 
 </body>
 
